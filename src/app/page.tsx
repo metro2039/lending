@@ -11,6 +11,7 @@ const translations = {
     description: "Добро пожаловать в столичную подземку.",
     devStatus: "Сайт находится в разработке.",
     officialLink: "Официальный сайт игры Metro 2039",
+    telegramLink: "Наш Telegram-канал",
     legalLink: "Юридическая информация",
     footer: "Из тени в свет.",
   },
@@ -21,6 +22,7 @@ const translations = {
     description: "Welcome to the capital's metro system.",
     devStatus: "Website is under development.",
     officialLink: "Official website of the game Metro 2039",
+    telegramLink: "Telegram Channel (fan)",
     legalLink: "Legal Information",
     footer: "From shadow into light.",
   }
@@ -89,6 +91,20 @@ export default function Home() {
           >
             <span className="absolute inset-0 translate-y-full bg-metro-orange transition-transform group-hover:translate-y-0" />
             <span className="relative z-10">{t.officialLink}</span>
+          </a>
+
+          <a
+            href="https://t.me/+RPf6lTzBCZpkMTMy"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="group flex items-center gap-2 text-sm font-bold text-gray-400 transition-colors hover:text-metro-orange"
+          >
+            <img 
+              src="/telegram.svg" 
+              alt="Telegram" 
+              className="h-5 w-5 invert opacity-50 transition-opacity group-hover:opacity-100" 
+            />
+            <span>{t.telegramLink}</span>
           </a>
         </div>
 
