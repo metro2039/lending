@@ -1,37 +1,42 @@
+'use client';
+
 import React from 'react';
+import Link from 'next/link';
+import { Link as MuiLink } from '@mui/material';
 
 interface LegalDisclaimerProps {
   lang: 'ru' | 'en';
 }
 
 const translations = {
-  ru: {
-    title: "Юридическая информация",
-    linkText: "Ознакомиться с правовой информацией на GitHub",
-  },
-  en: {
-    title: "Legal Information",
-    linkText: "Read legal information on GitHub",
-  }
+  ru: "Правовая информация",
+  en: "Legal Info"
 };
 
 const LegalDisclaimer: React.FC<LegalDisclaimerProps> = ({ lang }) => {
-  const t = translations[lang];
+  const text = translations[lang];
 
   return (
-    <div id="legal" className="mt-16 w-full max-w-2xl border-t border-metro-green/30 pt-8 text-center">
-      <h2 className="mb-4 text-xs font-bold uppercase tracking-widest text-metro-green">
-        {t.title}
-      </h2>
-      <a 
-        href="https://github.com/metro2039/.github/blob/main/profile/README.md"
-        target="_blank"
-        rel="noopener noreferrer"
-        className="text-sm text-gray-500 underline decoration-metro-green/30 underline-offset-4 hover:text-metro-orange hover:decoration-metro-orange transition-all"
+    <Link href={`/${lang}/legal`} passHref style={{ textDecoration: 'none' }}>
+      <MuiLink 
+        component="span"
+        sx={{ 
+          fontSize: '0.625rem', 
+          color: 'rgba(255, 255, 255, 0.2)', 
+          textDecoration: 'none',
+          textTransform: 'uppercase',
+          letterSpacing: '0.1em',
+          fontWeight: 'bold',
+          cursor: 'pointer',
+          transition: 'all 0.3s',
+          '&:hover': { 
+            color: '#ff4500',
+          } 
+        }}
       >
-        {t.linkText}
-      </a>
-    </div>
+        {text}
+      </MuiLink>
+    </Link>
   );
 };
 
