@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Unbounded } from "next/font/google";
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v16-appRouter';
 import "./globals.css";
-import GoogleAnalytics from "@/components/GoogleAnalytics";
+import UmamiAnalytics from "@/components/UmamiAnalytics";
 
 const unbounded = Unbounded({
   variable: "--font-unbounded",
@@ -25,7 +25,7 @@ export default function RootLayout({
       className={`${unbounded.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col font-unbounded bg-black">
-        <GoogleAnalytics />
+        <UmamiAnalytics />
         <AppRouterCacheProvider>
           {children}
         </AppRouterCacheProvider>
