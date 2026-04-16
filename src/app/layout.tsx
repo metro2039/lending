@@ -24,8 +24,7 @@ export const metadata: Metadata = {
       {
         url: "/avatar.jpg",
         width: 1200,
-        height: 630,
-        alt: "Тизер Metro 2039",
+        height: 630
       },
     ],
     locale: "ru_RU",
