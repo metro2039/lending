@@ -10,8 +10,33 @@ const unbounded = Unbounded({
 });
 
 export const metadata: Metadata = {
-  title: "Metro 2039 — Фан-сообщество",
-  description: "Сайт фанатского сообщества Metro 2039. Находимся в разработке.",
+  title: "Metro 2039 — Новости, утечки и фан-сообщество новой части Metro",
+  description: "Главный ресурс по Metro 2039. Присоединяйся к нашему комьюнити!",
+  alternates: {
+    canonical: "https://metro2039.ru/ru",
+  },
+  openGraph: {
+    title: "Metro 2039 — Фан-сообщество",
+    description: "Свежие новости, инсайды и разборы грядущей части Metro. Будь в курсе событий первым!",
+    url: "https://metro2039.ru",
+    siteName: "Metro 2039 Community",
+    images: [
+      {
+        url: "/avatar.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Тизер Metro 2039",
+      },
+    ],
+    locale: "ru_RU",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Metro 2039 — Все новости и утечки",
+    description: "Узнай первым подробности новой игры во вселенной Метро.",
+    images: ["/avatar.jpg"],
+  },
 };
 
 export default function RootLayout({
