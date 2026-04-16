@@ -10,15 +10,16 @@ const unbounded = Unbounded({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL("https://metro2039.ru"),
   title: "Metro 2039 — Новости, утечки и фан-сообщество новой части Metro",
   description: "Главный ресурс по Metro 2039. Присоединяйся к нашему комьюнити!",
   alternates: {
-    canonical: "https://metro2039.ru/ru",
+    canonical: "/ru",
   },
   openGraph: {
     title: "Metro 2039 — Фан-сообщество",
     description: "Свежие новости, инсайды и разборы грядущей части Metro. Будь в курсе событий первым!",
-    url: "https://metro2039.ru",
+    url: "/ru",
     siteName: "Metro 2039 Community",
     images: [
       {
