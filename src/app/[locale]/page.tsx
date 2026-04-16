@@ -8,20 +8,20 @@ import Image from 'next/image';
 const translations = {
   ru: {
     heading: "Metro 2039",
-    subheading: "— Фан-сообщество",
+    subheading: "— Сообщество",
     status: "Связь установлена",
     description: "Добро пожаловать в столичную подземку. Следите за последними сводками из глубин метрополитена.",
     officialLink: "Официальный ресурс игры",
-    telegramLink: "Присоединиться к Telegram",
+    telegramLink: "Присоединиться к новостному Telegram",
     footer: "Из тени в свет.",
   },
   en: {
     heading: "Metro 2039",
-    subheading: "— Fan Community",
+    subheading: "— Community",
     status: "Link established",
     description: "Welcome to the capital's metro system. Stay tuned for the latest reports from the depths of the underground.",
     officialLink: "Official Game Resource",
-    telegramLink: "Join our Telegram",
+    telegramLink: "Join our News Telegram",
     footer: "From shadow into light.",
   }
 };
