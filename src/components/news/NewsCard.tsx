@@ -4,7 +4,6 @@ import React from 'react';
 import { 
   Card, 
   CardContent, 
-  CardMedia, 
   Typography, 
   Box, 
   styled 
@@ -13,7 +12,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { GhostPost } from '@/types/ghost';
 
-const StyledCard = styled(Card)(({ theme }) => ({
+const StyledCard = styled(Card)(() => ({
   backgroundColor: 'rgba(20, 20, 20, 0.8)',
   backdropFilter: 'blur(10px)',
   border: '1px solid rgba(255, 255, 255, 0.1)',
@@ -32,7 +31,7 @@ const StyledCard = styled(Card)(({ theme }) => ({
   },
 }));
 
-const ActionButton = styled(Box)(({ theme }) => ({
+const ActionButton = styled(Box)(() => ({
   marginTop: 'auto',
   paddingTop: '16px',
   fontSize: '10px',

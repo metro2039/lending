@@ -4,8 +4,7 @@ import React, { useState } from 'react';
 import { Box, IconButton, Tooltip, Typography, styled } from '@mui/material';
 import { 
   Telegram as TelegramIcon, 
-  ContentCopy as CopyIcon,
-  Share as ShareIcon
+  ContentCopy as CopyIcon
 } from '@mui/icons-material';
 
 // Кастомная иконка VK
@@ -15,7 +14,7 @@ const VkIcon = () => (
   </svg>
 );
 
-const ShareButton = styled(IconButton)<{ component?: React.ElementType; href?: string; target?: string }>(({ theme }) => ({
+const ShareButton = styled(IconButton)<{ component?: React.ElementType; href?: string; target?: string }>(() => ({
   color: 'rgba(255, 255, 255, 0.4)',
   border: '1px solid rgba(255, 255, 255, 0.1)',
   borderRadius: '4px',

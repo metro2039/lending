@@ -1,5 +1,5 @@
 import React, { Suspense } from 'react';
-import { Box, Typography, Container, Link as MuiLink, Divider } from '@mui/material';
+import { Box, Typography, Container, Link as MuiLink } from '@mui/material';
 import LegalDisclaimer from '@/components/LegalDisclaimer';
 import NewsGrid from '@/components/news/NewsGrid';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
@@ -13,6 +13,7 @@ const translations = {
     description: "Добро пожаловать в столичную подземку. Следите за последними сводками из глубин метрополитена.",
     officialLink: "Официальный ресурс игры",
     telegramLink: "Присоединиться к новостному Telegram",
+    readMore: "Читать больше",
     footer: "Из тени в свет.",
   },
   en: {
@@ -22,6 +23,7 @@ const translations = {
     description: "Welcome to the capital's metro system. Stay tuned for the latest reports from the depths of the underground.",
     officialLink: "Official Game Resource",
     telegramLink: "Join our News Telegram",
+    readMore: "Read more",
     footer: "From shadow into light.",
   }
 };
@@ -95,7 +97,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
         }}>
           <Box sx={{ width: 6, height: 6, borderRadius: '50%', bgcolor: '#ff4500', animation: 'pulse 2s infinite' }} />
           <Typography variant="caption" sx={{ color: '#ff4500', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '0.3em', fontSize: '0.625rem' }}>
-            {t.status} <span style={{ opacity: 0.5, marginLeft: '8px' }}>// ID: M39RU</span>
+            {t.status} <span style={{ opacity: 0.5, marginLeft: '8px' }}>{'// ID: M39RU'}</span>
           </Typography>
         </Box>
 
@@ -203,7 +205,39 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       {/* News Section */}
       <Container maxWidth="lg" sx={{ mb: 10 }}>
         <Suspense fallback={<Typography sx={{ color: 'rgba(255,255,255,0.1)', textAlign: 'center', py: 10, letterSpacing: '0.5em' }}>[ SCANNING FREQUENCIES... ]</Typography>}>
-          <NewsGrid locale={locale} />
+          <NewsGrid locale={locale} limit={6} />
+          <Box sx={{ display: 'flex', justifyContent: 'center', mt: -4, mb: 8 }}>
+            <MuiLink
+              href={`/${locale}/news`}
+              sx={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                px: 4,
+                py: 1.5,
+                border: '1px solid rgba(255, 69, 0, 0.3)',
+                bgcolor: 'rgba(20, 20, 20, 0.5)',
+                color: 'rgba(255, 255, 255, 0.8)',
+                fontWeight: 700,
+                textTransform: 'uppercase',
+                letterSpacing: '0.15em',
+                textDecoration: 'none',
+                fontSize: '0.75rem',
+                transition: 'all 0.3s ease',
+                position: 'relative',
+                overflow: 'hidden',
+                '&:hover': {
+                  bgcolor: 'rgba(255, 69, 0, 0.1)',
+                  color: '#ff4500',
+                  borderColor: '#ff4500',
+                  transform: 'translateY(-2px)',
+                  boxShadow: '0 5px 15px rgba(255, 69, 0, 0.1)'
+                }
+              }}
+            >
+              {t.readMore}
+            </MuiLink>
+          </Box>
         </Suspense>
       </Container>
 

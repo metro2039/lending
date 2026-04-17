@@ -5,10 +5,15 @@ import NewsCard from './NewsCard';
 
 interface NewsGridProps {
   locale: string;
+  limit?: number;
 }
 
-export default async function NewsGrid({ locale }: NewsGridProps) {
-  const posts = await getPosts(locale);
+export default async function NewsGrid({ locale, limit }: NewsGridProps) {
+  let posts = await getPosts(locale);
+  
+  if (limit && posts.length > limit) {
+    posts = posts.slice(0, limit);
+  }
 
   if (posts.length === 0) {
     const noNewsText = locale === 'ru' 
