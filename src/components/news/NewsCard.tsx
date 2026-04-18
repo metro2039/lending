@@ -64,7 +64,7 @@ export default function NewsCard({ post, locale }: NewsCardProps) {
   const readMoreText = locale === 'ru' ? 'Читать далее' : 'Read more';
 
   return (
-    <Link href={`/${locale}/${post.slug}`} style={{ textDecoration: 'none' }}>
+    <Link href={`/${locale}/news/${post.slug}`} style={{ textDecoration: 'none' }}>
       <StyledCard elevation={0}>
         {post.feature_image && (
           <Box sx={{ position: 'relative', width: '100%', height: 200, overflow: 'hidden' }}>

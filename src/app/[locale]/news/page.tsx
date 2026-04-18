@@ -1,6 +1,7 @@
 import React, { Suspense } from 'react';
 import NewsGrid from '@/components/news/NewsGrid';
 import { Box, Container, Typography, Skeleton, Grid } from '@mui/material';
+import LanguageSwitcher from '@/components/LanguageSwitcher';
 
 // Скелетон для загрузки новостей
 function NewsSkeleton() {
@@ -21,15 +22,15 @@ function NewsSkeleton() {
 }
 
 export default async function NewsPage({ 
-  searchParams 
+  params 
 }: { 
-  searchParams: Promise<{ lang?: string }> 
+  params: Promise<{ locale: string }> 
 }) {
-  const params = await searchParams;
-  const locale = params.lang || 'ru';
+  const { locale } = await params;
 
   return (
-    <Box component="main" sx={{ minHeight: '100vh', py: 12, px: 3 }}>
+    <Box component="main" sx={{ minHeight: '100vh', py: 12, px: 3, position: 'relative' }}>
+      <LanguageSwitcher currentLocale={locale} />
       {/* Background atmosphere elements mirroring Home page */}
       <Box sx={{ 
         position: 'fixed', 

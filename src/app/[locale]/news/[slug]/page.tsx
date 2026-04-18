@@ -5,14 +5,16 @@ import { Box, Container, Typography, Breadcrumbs, Link as MuiLink } from '@mui/m
 import Image from 'next/image';
 import Link from 'next/link';
 
+import LanguageSwitcher from '@/components/LanguageSwitcher';
+
+import ShareButtons from '@/components/news/ShareButtons';
+
 interface PostPageProps {
-  params: Promise<{ slug: string }>;
-  searchParams: Promise<{ lang?: string }>;
+  params: Promise<{ locale: string, slug: string }>;
 }
 
-export default async function PostPage({ params, searchParams }: PostPageProps) {
-  const { slug } = await params;
-  const { lang: locale = 'ru' } = await searchParams;
+export default async function PostPage({ params }: PostPageProps) {
+  const { locale, slug } = await params;
   
   const post = await getPostBySlug(slug, locale);
 
@@ -26,9 +28,8 @@ export default async function PostPage({ params, searchParams }: PostPageProps) 
   );
 
   return (
-    <Box component="article" sx={{ minHeight: '100vh', py: 8, color: '#ffffff' }}>
-      {/* Background elements */}
-      <Box sx={{ position: 'fixed', inset: 0, zIndex: -1, bgcolor: '#000000' }} />
+    <Box component="article" sx={{ minHeight: '100vh', py: 8, color: '#ffffff', bgcolor: 'black' }}>
+      <LanguageSwitcher currentLocale={locale} />
       
       <Container maxWidth="md">
         <Breadcrumbs 
@@ -37,13 +38,21 @@ export default async function PostPage({ params, searchParams }: PostPageProps) 
             '& .MuiBreadcrumbs-separator': { color: 'rgba(255,255,255,0.3)' } 
           }}
         >
-          <MuiLink 
-            component={Link} 
-            href={`/news${locale !== 'ru' ? `?lang=${locale}` : ''}`}
-            sx={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.1em', textDecoration: 'none', '&:hover': { color: '#ff4500' } }}
-          >
-            {locale === 'ru' ? 'Все новости' : 'All News'}
-          </MuiLink>
+          <Link href={`/${locale}/news`} passHref style={{ textDecoration: 'none' }}>
+            <MuiLink 
+              component="span"
+              sx={{ 
+                color: 'rgba(255,255,255,0.5)', 
+                fontSize: '0.75rem', 
+                textTransform: 'uppercase', 
+                letterSpacing: '0.1em', 
+                cursor: 'pointer',
+                '&:hover': { color: '#ff4500' } 
+              }}
+            >
+              {locale === 'ru' ? 'Все новости' : 'All News'}
+            </MuiLink>
+          </Link>
           <Typography sx={{ color: 'rgba(255,255,255,0.3)', fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.1em' }}>
             {post.title}
           </Typography>
@@ -102,26 +111,29 @@ export default async function PostPage({ params, searchParams }: PostPageProps) 
           }}
           dangerouslySetInnerHTML={{ __html: post.html }}
         />
+
+        <ShareButtons title={post.title} locale={locale} />
         
         <Box sx={{ mt: 12, pt: 4, borderTop: '1px solid rgba(255,255,255,0.1)', textAlign: 'center' }}>
-          <MuiLink 
-            component={Link} 
-            href={`/news${locale !== 'ru' ? `?lang=${locale}` : ''}`}
-            sx={{ 
-              display: 'inline-flex',
-              alignItems: 'center',
-              gap: 1,
-              color: '#ff4500', 
-              fontWeight: 'bold', 
-              textTransform: 'uppercase', 
-              letterSpacing: '0.2em',
-              textDecoration: 'none',
-              fontSize: '0.875rem',
-              '&:hover': { opacity: 0.8 }
-            }}
-          >
-            ← {locale === 'ru' ? 'Вернуться к списку' : 'Back to list'}
-          </MuiLink>
+          <Link href={`/${locale}/news`} passHref style={{ textDecoration: 'none' }}>
+            <MuiLink 
+              component="span"
+              sx={{ 
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: 1,
+                color: '#ff4500', 
+                fontWeight: 'bold', 
+                textTransform: 'uppercase', 
+                letterSpacing: '0.2em',
+                fontSize: '0.875rem',
+                cursor: 'pointer',
+                '&:hover': { opacity: 0.8 }
+              }}
+            >
+              ← {locale === 'ru' ? 'Вернуться к списку' : 'Back to list'}
+            </MuiLink>
+          </Link>
         </Box>
       </Container>
     </Box>
